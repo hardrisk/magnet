@@ -1,1 +1,1 @@
-# magnet
+# magnet link oluşturma vs
