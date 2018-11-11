@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Online Magnet Link Generator</title>
+</head>
+<body>
+<script type="text/javascript">
+function update()
+{
+    try
+    {
+        var data = "magnet:"
+            + "?xt=urn:btih:" + document.getElementById("hash").value
+            + "&dn=" + encodeURIComponent(document.getElementById("name").value)
+            + "&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80"
+            + "&tr=udp%3A%2F%2Fopentor.org%3A2710"
+            + "&tr=udp%3A%2F%2Ftracker.ccc.de%3A80"
+            + "&tr=udp%3A%2F%2Ftracker.blackunicorn.xyz%3A6969"
+            + "&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969"
+            + "&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969"
+            ;
+        document.getElementById("link").href = data;
+        document.getElementById("link_text").value = data;
+    }
+    catch(e)
+    {
+        alert("exception: " + e);
+    }
+}
+</script>
+<div>
+	<form name="form" onsubmit="update(); return false;">
+		<label>info hash: <input id="hash" size=80></label>
+		(mandatory)
+		<br>
+		<label>torrent name: <input id="name" size=80></label>
+		(this is not an URL, this is a string you will see in the client)
+		<br>
+		<input type="submit" value="Generate">
+		<br>
+		<a href="magnet:" id="link">Magnet Link</a>: <input readonly id="link_text" size=80>
+		<br>
+	</form>
+</div>
+</body>
+</html>
